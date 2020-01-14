@@ -1,13 +1,13 @@
 {% set name = "dagster_pyspark" %}
-{% set version = "0.6.4" %}
+{% set version = "0.6.7.post0" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 71d5c21a5628ef61b520f604809003546f4bb8a7d2f928940dc4bfb9fef1692d
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name|replace('_', '-') }}/{{ name|replace('_', '-') }}-{{ version }}.tar.gz"
+  sha256: 12eb08265324207b57a5787bf5523dae110afad6ac6a93d65946ea20e2c8c408
 
 build:
   number: 0
@@ -26,6 +26,8 @@ requirements:
     - pyspark
 
 test:
+  requires:
+    - python <3.8.0a0
   imports:
     - dagster_pyspark
 
